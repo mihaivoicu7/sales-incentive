@@ -1,0 +1,11 @@
+version: '2'
+services:
+    sales_benefit-postgresql:
+        image: postgres:10.4
+        # volumes:
+        #     - ~/volumes/jhipster/sales_benefit/postgresql/:/var/lib/postgresql/data/
+        environment:
+            - POSTGRES_USER=sales_benefit
+            - POSTGRES_PASSWORD=
+        ports:
+            - 5432:5432

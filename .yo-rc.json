@@ -1,0 +1,31 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.mvoicu.sales.benefits"
+    },
+    "jhipsterVersion": "5.3.1",
+    "applicationType": "monolith",
+    "baseName": "sales_benefit",
+    "packageName": "com.mvoicu.sales.benefits",
+    "packageFolder": "com/mvoicu/sales/benefits",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "no",
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Memory",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "OWMyMzIyMjk0NmRlYzUyMTVmY2IyN2ZhYjQ5YTcwOTNmYmI2OGU1OWRhZjI3YTIyYjViZDY4ZmRjYjE3OWZiNWEyMTVhNTRjM2RiY2M0MTdmOGU1ZDUyYjk4MTRiMWNjN2U3ZDdlZGEyNDY4ZDRkM2JlMjJiYWFlOGVjMmJiY2M=",
+    "clientFramework": "angularX",
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "enableTranslation": false
+  }
+}
