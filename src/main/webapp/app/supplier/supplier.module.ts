@@ -1,15 +1,20 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 
 import {SupplierProductModule} from './product/supplier-product.module';
 import {SupplierProductService} from './service/supplier-product.service';
+import {SalesBenefitCampaignModule} from './campaign/campaign.module';
+import {CampaignService} from './service/campaign.service';
+
 @NgModule({
     // prettier-ignore
     imports: [
-        SupplierProductModule
+        SupplierProductModule,
+        SalesBenefitCampaignModule
     ],
     declarations: [],
     entryComponents: [],
-    providers: [SupplierProductService],
+    providers: [SupplierProductService, CampaignService],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class SupplierModule {}
+export class SupplierModule {
+}
