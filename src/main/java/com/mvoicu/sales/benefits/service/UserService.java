@@ -247,6 +247,11 @@ public class UserService {
         return SecurityUtils.getCurrentUserLogin().flatMap(userRepository::findOneWithAuthoritiesByLogin);
     }
 
+    @Transactional(readOnly = true)
+    public User getUserWithAuthoritiesObject() throws Exception {
+        return SecurityUtils.getCurrentUserLogin().flatMap(userRepository::findOneWithAuthoritiesByLogin).orElseThrow(()->new Exception("User is not logged in"));
+    }
+
     /**
      * Not activated users should be automatically deleted after 3 days.
      * <p>

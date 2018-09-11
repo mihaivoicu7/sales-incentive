@@ -40,4 +40,6 @@ public interface SupplierService {
      * @param id the id of the entity
      */
     void delete(Long id);
+
+    Optional<SupplierDTO> findCurrentSupplier();
 }

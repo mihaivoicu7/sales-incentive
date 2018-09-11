@@ -1,5 +1,6 @@
 package com.mvoicu.sales.benefits.service.impl;
 
+import com.mvoicu.sales.benefits.security.SecurityUtils;
 import com.mvoicu.sales.benefits.service.SupplierService;
 import com.mvoicu.sales.benefits.domain.Supplier;
 import com.mvoicu.sales.benefits.repository.SupplierRepository;
@@ -85,5 +86,10 @@ public class SupplierServiceImpl implements SupplierService {
     public void delete(Long id) {
         log.debug("Request to delete Supplier : {}", id);
         supplierRepository.deleteById(id);
+    }
+
+    @Override
+    public Optional<SupplierDTO> findCurrentSupplier() {
+        return SecurityUtils.getCurrentUserLogin().flatMap(supplierRepository::findByUserLogin).map(supplierMapper::toDto);
     }
 }
