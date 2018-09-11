@@ -1,0 +1,36 @@
+{
+    "name": "SellerWalletTransaction",
+    "fields": [
+        {
+            "fieldName": "amount",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "transactionType",
+            "fieldType": "WalletTransactionType",
+            "fieldValues": "IN_PENDING,IN_CONFIRMED,OUT_PENDING,OUT_CONFIRMED"
+        },
+        {
+            "fieldName": "transactionDate",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "sellerWallet",
+            "otherEntityName": "sellerWallet",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20180910181113",
+    "entityTableName": "seller_wallet_transaction",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "salesBen"
+}

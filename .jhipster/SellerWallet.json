@@ -1,0 +1,31 @@
+{
+    "name": "SellerWallet",
+    "fields": [
+        {
+            "fieldName": "availableAmount",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "inPendingAmount",
+            "fieldType": "Double"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "seller",
+            "otherEntityName": "seller",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20180910181112",
+    "entityTableName": "seller_wallet",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "salesBen"
+}

@@ -1,0 +1,72 @@
+<div>
+    <h2 id="page-heading">
+        <span>Seller Wallet Transactions</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-seller-wallet-transaction-sales-ben" [routerLink]="['/seller-wallet-transaction-sales-ben/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Seller Wallet Transaction
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="sellerWalletTransactions">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="amount"><span>Amount</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="transactionType"><span>Transaction Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="transactionDate"><span>Transaction Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="sellerWalletId"><span>Seller Wallet</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let sellerWalletTransaction of sellerWalletTransactions ;trackBy: trackId">
+                <td><a [routerLink]="['/seller-wallet-transaction-sales-ben', sellerWalletTransaction.id, 'view' ]">{{sellerWalletTransaction.id}}</a></td>
+                <td>{{sellerWalletTransaction.amount}}</td>
+                <td>{{sellerWalletTransaction.transactionType}}</td>
+                <td>{{sellerWalletTransaction.transactionDate | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="sellerWalletTransaction.sellerWalletId">
+                        <a [routerLink]="['../seller-wallet-sales-ben', sellerWalletTransaction.sellerWalletId , 'view' ]" >{{sellerWalletTransaction.sellerWalletId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/seller-wallet-transaction-sales-ben', sellerWalletTransaction.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/seller-wallet-transaction-sales-ben', sellerWalletTransaction.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'seller-wallet-transaction-sales-ben/'+ sellerWalletTransaction.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="sellerWalletTransactions && sellerWalletTransactions.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

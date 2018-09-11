@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="sellerWallet">
+            <h2><span>Seller Wallet</span> {{sellerWallet.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Available Amount</span></dt>
+                <dd>
+                    <span>{{sellerWallet.availableAmount}}</span>
+                </dd>
+                <dt><span>In Pending Amount</span></dt>
+                <dd>
+                    <span>{{sellerWallet.inPendingAmount}}</span>
+                </dd>
+                <dt><span>Seller</span></dt>
+                <dd>
+                    <div *ngIf="sellerWallet.sellerId">
+                        <a [routerLink]="['/seller-sales-ben', sellerWallet.sellerId, 'view']">{{sellerWallet.sellerId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/seller-wallet-sales-ben', sellerWallet.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

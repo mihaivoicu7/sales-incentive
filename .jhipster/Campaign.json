@@ -1,0 +1,42 @@
+{
+    "name": "Campaign",
+    "fields": [
+        {
+            "fieldName": "campaignName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "fromDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "toDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "isActive",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "supplier",
+            "otherEntityName": "supplier",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20180910181108",
+    "entityTableName": "campaign",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "salesBen"
+}

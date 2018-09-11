@@ -1,0 +1,41 @@
+{
+    "name": "SellerTransaction",
+    "fields": [
+        {
+            "fieldName": "confirmed",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "amount",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "transactionDate",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "campaignProduct",
+            "otherEntityName": "campaignProduct",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "seller",
+            "otherEntityName": "seller",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20180910181111",
+    "entityTableName": "seller_transaction",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "salesBen"
+}

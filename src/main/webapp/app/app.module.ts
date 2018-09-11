@@ -17,6 +17,7 @@ import { SalesBenefitAppRoutingModule } from './app-routing.module';
 import { SalesBenefitHomeModule } from './home/home.module';
 import { SalesBenefitAccountModule } from './account/account.module';
 import { SalesBenefitEntityModule } from './entities/entity.module';
+import { SupplierModule } from './supplier/supplier.module';
 import * as moment from 'moment';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ErrorComponent } from './layouts';
@@ -30,7 +31,8 @@ import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent
         SalesBenefitCoreModule,
         SalesBenefitHomeModule,
         SalesBenefitAccountModule,
-        SalesBenefitEntityModule
+        SalesBenefitEntityModule,
+        SupplierModule
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, FooterComponent],

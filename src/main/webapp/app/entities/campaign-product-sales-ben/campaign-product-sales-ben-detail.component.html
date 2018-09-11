@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="campaignProduct">
+            <h2><span>Campaign Product</span> {{campaignProduct.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Price</span></dt>
+                <dd>
+                    <span>{{campaignProduct.price}}</span>
+                </dd>
+                <dt><span>Is Active</span></dt>
+                <dd>
+                    <span>{{campaignProduct.isActive}}</span>
+                </dd>
+                <dt><span>Discount</span></dt>
+                <dd>
+                    <span>{{campaignProduct.discount}}</span>
+                </dd>
+                <dt><span>Campaign</span></dt>
+                <dd>
+                    <div *ngIf="campaignProduct.campaignId">
+                        <a [routerLink]="['/campaign-sales-ben', campaignProduct.campaignId, 'view']">{{campaignProduct.campaignId}}</a>
+                    </div>
+                </dd>
+                <dt><span>Product</span></dt>
+                <dd>
+                    <div *ngIf="campaignProduct.productId">
+                        <a [routerLink]="['/product-sales-ben', campaignProduct.productId, 'view']">{{campaignProduct.productId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/campaign-product-sales-ben', campaignProduct.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

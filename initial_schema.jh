@@ -1,0 +1,82 @@
+
+entity Product {
+	productName String required,
+    productCode String,
+    price Double,
+    isActive Boolean,
+    CreateDate Instant,
+    UpdateDate Instant
+}
+
+entity Campaign {
+	campaignName String required,
+    fromDate Instant,
+    toDate Instant,
+    isActive Boolean
+}
+
+entity CampaignProduct {
+	price Double,
+    isActive Boolean,
+    discount Double
+}
+
+entity Seller {
+	isActive Boolean
+}
+
+entity SellerTransaction {
+	confirmed Boolean,
+    amount Long,
+    transactionDate Instant
+}
+
+entity SellerWallet {
+	availableAmount Double,
+    inPendingAmount Double
+}
+
+entity SellerWalletTransaction {
+	amount Double,
+    transactionType WalletTransactionType,
+	transactionDate Instant   
+}
+
+enum WalletTransactionType {
+	IN_PENDING,
+    IN_CONFIRMED,
+    OUT_PENDING,
+    OUT_CONFIRMED
+}
+
+entity Supplier {
+	companyName String,
+    companyCode String
+}
+
+relationship ManyToOne {
+	Product{supplier} to Supplier,
+    Campaign{supplier} to Supplier
+    SellerTransaction{campaignProduct} to CampaignProduct,
+    SellerTransaction{seller} to Seller,
+    SellerWalletTransaction{sellerWallet} to SellerWallet,
+    SellerWallet{seller} to Seller
+}
+
+relationship OneToOne {
+	CampaignProduct{campaign} to Campaign,
+    CampaignProduct{product} to Product,
+    Supplier{user} to User,
+    Seller{user} to User
+}
+
+// Set pagination options
+paginate Campaign, Product, SellerWalletTransaction with pagination
+paginate SellerTransaction with pagination
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+// Set an angular suffix
+angularSuffix * with salesBen

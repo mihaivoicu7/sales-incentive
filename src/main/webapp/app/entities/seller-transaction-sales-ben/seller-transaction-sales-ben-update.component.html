@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-seller-transaction-sales-ben-heading">Create or edit a Seller Transaction</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!sellerTransaction.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="sellerTransaction.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_confirmed">Confirmed</label>
+                    <input type="checkbox" class="form-control" name="confirmed" id="field_confirmed"
+                        [(ngModel)]="sellerTransaction.confirmed" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_amount">Amount</label>
+                    <input type="number" class="form-control" name="amount" id="field_amount"
+                        [(ngModel)]="sellerTransaction.amount" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_transactionDate">Transaction Date</label>
+                    <div class="d-flex">
+                        <input id="field_transactionDate" type="datetime-local" class="form-control" name="transactionDate" [(ngModel)]="transactionDate"
+                        />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_campaignProduct">Campaign Product</label>
+                    <select class="form-control" id="field_campaignProduct" name="campaignProduct" [(ngModel)]="sellerTransaction.campaignProductId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="campaignProductOption.id" *ngFor="let campaignProductOption of campaignproducts; trackBy: trackCampaignProductById">{{campaignProductOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_seller">Seller</label>
+                    <select class="form-control" id="field_seller" name="seller" [(ngModel)]="sellerTransaction.sellerId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="sellerOption.id" *ngFor="let sellerOption of sellers; trackBy: trackSellerById">{{sellerOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

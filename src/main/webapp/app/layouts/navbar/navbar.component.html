@@ -4,8 +4,7 @@
             <fa-icon [icon]="'bars'"></fa-icon>
         </a>
         <a class="navbar-brand logo float-left" routerLink="/" (click)="collapseNavbar()">
-            <span class="logo-img"></span>
-            <span class="navbar-title">Sales_benefit</span> <span class="navbar-version">{{version}}</span>
+            <span class="navbar-title">Platforma bonusare</span> <span class="navbar-version">{{version}}</span>
         </a>
     </div>
     <div class="navbar-collapse collapse" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed" [ngSwitch]="isAuthenticated()">
@@ -29,8 +28,79 @@
                     </span>
                 </a>
                 <ul class="dropdown-menu" ngbDropdownMenu>
+                    <li>
+                        <a class="dropdown-item" routerLink="product-sales-ben" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon [icon]="'asterisk'" [fixedWidth]="true"></fa-icon>
+                            <span>Product Sales Ben</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="campaign-sales-ben" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon [icon]="'asterisk'" [fixedWidth]="true"></fa-icon>
+                            <span>Campaign Sales Ben</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="campaign-product-sales-ben" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon [icon]="'asterisk'" [fixedWidth]="true"></fa-icon>
+                            <span>Campaign Product Sales Ben</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="seller-sales-ben" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon [icon]="'asterisk'" [fixedWidth]="true"></fa-icon>
+                            <span>Seller Sales Ben</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="seller-transaction-sales-ben" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon [icon]="'asterisk'" [fixedWidth]="true"></fa-icon>
+                            <span>Seller Transaction Sales Ben</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="seller-wallet-sales-ben" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon [icon]="'asterisk'" [fixedWidth]="true"></fa-icon>
+                            <span>Seller Wallet Sales Ben</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="seller-wallet-transaction-sales-ben" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon [icon]="'asterisk'" [fixedWidth]="true"></fa-icon>
+                            <span>Seller Wallet Transaction Sales Ben</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="supplier-sales-ben" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon [icon]="'asterisk'" [fixedWidth]="true"></fa-icon>
+                            <span>Supplier Sales Ben</span>
+                        </a>
+                    </li>
                     <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
                 </ul>
+            </li>
+            
+            <li *jhiHasAnyAuthority="'ROLE_SUPPLIER'" ngbDropdown class="nav-item dropdown pointer" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="admin-menu">
+                    <span>
+                        <fa-icon [icon]="'briefcase'"></fa-icon>
+                        <span>Portofoliu</span>
+                    </span>
+                </a>
+                <ul class="dropdown-menu" ngbDropdownMenu>
+                        <li>
+                            <a class="dropdown-item" routerLink="supplier-product" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                                <fa-icon [icon]="'asterisk'" [fixedWidth]="true"></fa-icon>
+                                <span>Produse</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" routerLink="product-sales-ben" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                                <fa-icon [icon]="'asterisk'" [fixedWidth]="true"></fa-icon>
+                                <span>Campanii</span>
+                            </a>
+                        </li>
+                    </ul>
             </li>
             <li *jhiHasAnyAuthority="'ROLE_ADMIN'" ngbDropdown class="nav-item dropdown pointer" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="admin-menu">

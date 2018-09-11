@@ -1,0 +1,81 @@
+package com.mvoicu.sales.benefits.service.dto;
+
+import java.io.Serializable;
+import java.util.Objects;
+
+/**
+ * A DTO for the Supplier entity.
+ */
+public class SupplierDTO implements Serializable {
+
+    private Long id;
+
+    private String companyName;
+
+    private String companyCode;
+
+    private Long userId;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public String getCompanyCode() {
+        return companyCode;
+    }
+
+    public void setCompanyCode(String companyCode) {
+        this.companyCode = companyCode;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        SupplierDTO supplierDTO = (SupplierDTO) o;
+        if (supplierDTO.getId() == null || getId() == null) {
+            return false;
+        }
+        return Objects.equals(getId(), supplierDTO.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(getId());
+    }
+
+    @Override
+    public String toString() {
+        return "SupplierDTO{" +
+            "id=" + getId() +
+            ", companyName='" + getCompanyName() + "'" +
+            ", companyCode='" + getCompanyCode() + "'" +
+            ", user=" + getUserId() +
+            "}";
+    }
+}

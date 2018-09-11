@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="sellerWalletTransaction">
+            <h2><span>Seller Wallet Transaction</span> {{sellerWalletTransaction.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Amount</span></dt>
+                <dd>
+                    <span>{{sellerWalletTransaction.amount}}</span>
+                </dd>
+                <dt><span>Transaction Type</span></dt>
+                <dd>
+                    <span>{{sellerWalletTransaction.transactionType}}</span>
+                </dd>
+                <dt><span>Transaction Date</span></dt>
+                <dd>
+                    <span>{{sellerWalletTransaction.transactionDate}}</span>
+                </dd>
+                <dt><span>Seller Wallet</span></dt>
+                <dd>
+                    <div *ngIf="sellerWalletTransaction.sellerWalletId">
+                        <a [routerLink]="['/seller-wallet-sales-ben', sellerWalletTransaction.sellerWalletId, 'view']">{{sellerWalletTransaction.sellerWalletId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/seller-wallet-transaction-sales-ben', sellerWalletTransaction.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

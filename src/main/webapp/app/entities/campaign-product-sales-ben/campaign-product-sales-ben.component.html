@@ -1,0 +1,70 @@
+<div>
+    <h2 id="page-heading">
+        <span>Campaign Products</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-campaign-product-sales-ben" [routerLink]="['/campaign-product-sales-ben/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Campaign Product
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="campaignProducts">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Price</span></th>
+            <th><span>Is Active</span></th>
+            <th><span>Discount</span></th>
+            <th><span>Campaign</span></th>
+            <th><span>Product</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let campaignProduct of campaignProducts ;trackBy: trackId">
+                <td><a [routerLink]="['/campaign-product-sales-ben', campaignProduct.id, 'view' ]">{{campaignProduct.id}}</a></td>
+                <td>{{campaignProduct.price}}</td>
+                <td>{{campaignProduct.isActive}}</td>
+                <td>{{campaignProduct.discount}}</td>
+                <td>
+                    <div *ngIf="campaignProduct.campaignId">
+                        <a [routerLink]="['../campaign-sales-ben', campaignProduct.campaignId , 'view' ]" >{{campaignProduct.campaignId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="campaignProduct.productId">
+                        <a [routerLink]="['../product-sales-ben', campaignProduct.productId , 'view' ]" >{{campaignProduct.productId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/campaign-product-sales-ben', campaignProduct.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/campaign-product-sales-ben', campaignProduct.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'campaign-product-sales-ben/'+ campaignProduct.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
