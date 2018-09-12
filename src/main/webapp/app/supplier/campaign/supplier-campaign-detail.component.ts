@@ -2,15 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { ICampaignSalesBen } from 'app/shared/model/campaign-sales-ben.model';
+import {PreviousState} from 'app/common/previous-state';
 
 @Component({
     selector: 'jhi-campaign-detail',
-    templateUrl: './campaign-detail.component.html'
+    templateUrl: './supplier-campaign-detail.component.html'
 })
-export class CampaignDetailComponent implements OnInit {
+export class SupplierCampaignDetailComponent extends PreviousState implements OnInit {
     campaign: ICampaignSalesBen;
 
-    constructor(private activatedRoute: ActivatedRoute) {}
+    constructor(private activatedRoute: ActivatedRoute) {
+        super();
+    }
 
     ngOnInit() {
         this.activatedRoute.data.subscribe(({ campaign }) => {
@@ -18,7 +21,4 @@ export class CampaignDetailComponent implements OnInit {
         });
     }
 
-    previousState() {
-        window.history.back();
-    }
 }

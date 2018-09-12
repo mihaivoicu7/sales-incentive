@@ -22,26 +22,26 @@
             </thead>
             <tbody>
             <tr *ngFor="let product of products ;trackBy: trackId">
-                <td><a [routerLink]="['/product-sales-ben', product.id, 'view' ]">{{product.productCode}}</a></td>
+                <td><a [routerLink]="['/supplier-product', product.id, 'view' ]">{{product.productCode}}</a></td>
                 <td>{{product.productName}}</td>
                 <td>{{product.price}}</td>
                 <td>{{product.createDate | date:'medium'}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
-                                [routerLink]="['/product-sales-ben', product.id, 'view' ]"
+                                [routerLink]="['/supplier-product', product.id, 'view' ]"
                                 class="btn btn-info btn-sm">
                             <fa-icon [icon]="'eye'"></fa-icon>
                             <span class="d-none d-md-inline">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/product-sales-ben', product.id, 'edit']"
+                                [routerLink]="['/supplier-product', product.id, 'edit']"
                                 class="btn btn-primary btn-sm">
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
                             <span class="d-none d-md-inline">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'product-sales-ben/'+ product.id + '/delete'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'supplier-product/'+ product.id + '/delete'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
                                 class="btn btn-danger btn-sm">

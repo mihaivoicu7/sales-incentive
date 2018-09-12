@@ -37,10 +37,10 @@ public class Product implements Serializable {
     private Boolean isActive;
 
     @Column(name = "create_date")
-    private Instant createDate;
+    private Instant createDate = Instant.now();
 
     @Column(name = "update_date")
-    private Instant updateDate;
+    private Instant updateDate = Instant.now();
 
     @ManyToOne
     @JsonIgnoreProperties("")

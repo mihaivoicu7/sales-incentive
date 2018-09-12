@@ -1,15 +1,16 @@
-import { Injectable } from '@angular/core';
-import { HttpResponse } from '@angular/common/http';
-import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes } from '@angular/router';
-import { JhiPaginationUtil, JhiResolvePagingParams } from 'ng-jhipster';
-import { UserRouteAccessService } from 'app/core';
-import { of } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { ProductSalesBen } from 'app/shared/model/product-sales-ben.model';
-import { SupplierProductService } from '../service/supplier-product.service';
-import { SupplierProductComponent } from './supplier-product.component';
-import { SupplierProductUpdateComponent } from './supplier-product-update.component';
-import { IProductSalesBen } from 'app/shared/model/product-sales-ben.model';
+import {Injectable} from '@angular/core';
+import {HttpResponse} from '@angular/common/http';
+import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot, Routes} from '@angular/router';
+import {JhiResolvePagingParams} from 'ng-jhipster';
+import {UserRouteAccessService} from 'app/core';
+import {of} from 'rxjs';
+import {map} from 'rxjs/operators';
+import {IProductSalesBen, ProductSalesBen} from 'app/shared/model/product-sales-ben.model';
+import {SupplierProductService} from '../service/supplier-product.service';
+import {SupplierProductComponent} from './supplier-product.component';
+import {SupplierProductUpdateComponent} from './supplier-product-update.component';
+import {SupplierProductDeleteDialogComponent} from 'app/supplier/product/supplier-product-delete-dialog.component';
+import {SupplierProductDetailComponent} from 'app/supplier/product/supplier-product-detail.component';
 
 @Injectable({ providedIn: 'root' })
 export class SupplierProductResolve implements Resolve<IProductSalesBen> {
@@ -49,5 +50,45 @@ export const supplierProductRoute: Routes = [
             pageTitle: 'Products'
         },
         canActivate: [UserRouteAccessService]
+    },
+    {
+        path: 'supplier-product/:id/view',
+        component: SupplierProductDetailComponent,
+        resolve: {
+            product: SupplierProductResolve
+        },
+        data: {
+            authorities: ['ROLE_SUPPLIER'],
+            pageTitle: 'Products'
+        },
+        canActivate: [UserRouteAccessService]
+    },
+    {
+        path: 'supplier-product/:id/edit',
+        component: SupplierProductUpdateComponent,
+        resolve: {
+            product: SupplierProductResolve
+        },
+        data: {
+            authorities: ['ROLE_SUPPLIER'],
+            pageTitle: 'Products'
+        },
+        canActivate: [UserRouteAccessService]
+    }
+];
+
+export const productPopupRoute: Routes = [
+    {
+        path: 'supplier-product/:id/delete',
+        component: SupplierProductDeleteDialogComponent,
+        resolve: {
+            product: SupplierProductResolve
+        },
+        data: {
+            authorities: ['ROLE_SUPPLIER'],
+            pageTitle: 'Products'
+        },
+        canActivate: [SupplierProductResolve],
+        outlet: 'popup'
     }
 ];

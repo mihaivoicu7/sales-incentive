@@ -9,9 +9,9 @@ import { CampaignService } from '../service/campaign.service';
 
 @Component({
     selector: 'jhi-campaign-delete-dialog',
-    templateUrl: './campaign-delete-dialog.component.html'
+    templateUrl: './supplier-campaign-delete-dialog.component.html'
 })
-export class CampaignDeleteDialogComponent {
+export class SupplierCampaignDeleteDialogComponent {
     campaign: ICampaignSalesBen;
 
     constructor(
@@ -39,7 +39,7 @@ export class CampaignDeleteDialogComponent {
     selector: 'jhi-campaign-delete-popup',
     template: ''
 })
-export class CampaignSalesBenDeletePopupComponent implements OnInit, OnDestroy {
+export class SupplierCampaignDeletePopupComponent implements OnInit, OnDestroy {
     private ngbModalRef: NgbModalRef;
 
     constructor(private activatedRoute: ActivatedRoute, private router: Router, private modalService: NgbModal) {}
@@ -47,7 +47,7 @@ export class CampaignSalesBenDeletePopupComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.activatedRoute.data.subscribe(({ campaign }) => {
             setTimeout(() => {
-                this.ngbModalRef = this.modalService.open(CampaignDeleteDialogComponent as Component, {
+                this.ngbModalRef = this.modalService.open(SupplierCampaignDeleteDialogComponent as Component, {
                     size: 'lg',
                     backdrop: 'static'
                 });

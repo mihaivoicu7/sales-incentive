@@ -28,7 +28,7 @@ public class Campaign implements Serializable {
     private String campaignName;
 
     @Column(name = "from_date")
-    private Instant fromDate;
+    private Instant fromDate = Instant.now();
 
     @Column(name = "to_date")
     private Instant toDate;

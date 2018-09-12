@@ -14,7 +14,7 @@ type EntityArrayResponseType = HttpResponse<ICampaignSalesBen[]>;
 
 @Injectable({ providedIn: 'root' })
 export class CampaignService {
-    private resourceUrl = SERVER_API_URL + 'api/campaigns';
+    private resourceUrl = SERVER_API_URL + 'api/supplier/campaigns';
 
     constructor(private http: HttpClient) {}
 

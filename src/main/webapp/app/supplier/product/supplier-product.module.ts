@@ -6,6 +6,8 @@ import {
     SupplierProductComponent,
     supplierProductRoute,
     SupplierProductUpdateComponent,
+    SupplierProductDetailComponent,
+    SupplierProductDeleteDialogComponent,
 } from '.';
 
 const ENTITY_STATES = [...supplierProductRoute];
@@ -15,10 +17,14 @@ const ENTITY_STATES = [...supplierProductRoute];
     declarations: [
         SupplierProductComponent,
         SupplierProductUpdateComponent,
+        SupplierProductDetailComponent,
+        SupplierProductDeleteDialogComponent,
     ],
     entryComponents: [
         SupplierProductComponent,
         SupplierProductUpdateComponent,
+        SupplierProductDetailComponent,
+        SupplierProductDeleteDialogComponent,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

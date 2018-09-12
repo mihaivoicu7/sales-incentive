@@ -7,10 +7,10 @@ import { of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { CampaignSalesBen } from 'app/shared/model/campaign-sales-ben.model';
 import { CampaignService } from '../service/campaign.service';
-import { CampaignComponent } from './campaign.component';
-import { CampaignDetailComponent } from './campaign-detail.component';
-import { CampaignUpdateComponent } from './campaign-update.component';
-import { CampaignSalesBenDeletePopupComponent } from './campaign-delete-dialog.component';
+import { SupplierCampaignComponent } from './supplier-campaign.component';
+import { SupplierCampaignDetailComponent } from './supplier-campaign-detail.component';
+import { SupplierCampaignUpdateComponent } from './supplier-campaign-update.component';
+import { SupplierCampaignDeletePopupComponent } from './supplier-campaign-delete-dialog.component';
 import { ICampaignSalesBen } from 'app/shared/model/campaign-sales-ben.model';
 
 @Injectable({ providedIn: 'root' })
@@ -26,10 +26,10 @@ export class CampaignSalesBenResolve implements Resolve<ICampaignSalesBen> {
     }
 }
 
-export const campaignRoute: Routes = [
+export const supplierCampaignRoute: Routes = [
     {
         path: 'campaign',
-        component: CampaignComponent,
+        component: SupplierCampaignComponent,
         resolve: {
             pagingParams: JhiResolvePagingParams
         },
@@ -42,7 +42,7 @@ export const campaignRoute: Routes = [
     },
     {
         path: 'campaign/:id/view',
-        component: CampaignDetailComponent,
+        component: SupplierCampaignDetailComponent,
         resolve: {
             campaign: CampaignSalesBenResolve
         },
@@ -54,7 +54,7 @@ export const campaignRoute: Routes = [
     },
     {
         path: 'campaign/new',
-        component: CampaignUpdateComponent,
+        component: SupplierCampaignUpdateComponent,
         resolve: {
             campaign: CampaignSalesBenResolve
         },
@@ -66,7 +66,7 @@ export const campaignRoute: Routes = [
     },
     {
         path: 'campaign/:id/edit',
-        component: CampaignUpdateComponent,
+        component: SupplierCampaignUpdateComponent,
         resolve: {
             campaign: CampaignSalesBenResolve
         },
@@ -81,7 +81,7 @@ export const campaignRoute: Routes = [
 export const campaignPopupRoute: Routes = [
     {
         path: 'campaign/:id/delete',
-        component: CampaignSalesBenDeletePopupComponent,
+        component: SupplierCampaignDeletePopupComponent,
         resolve: {
             campaign: CampaignSalesBenResolve
         },

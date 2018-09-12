@@ -13,9 +13,9 @@ import { SupplierSalesBenService } from 'app/entities/supplier-sales-ben';
 
 @Component({
     selector: 'jhi-campaign-update',
-    templateUrl: './campaign-update.component.html'
+    templateUrl: './supplier-campaign-update.component.html'
 })
-export class CampaignUpdateComponent implements OnInit {
+export class SupplierCampaignUpdateComponent implements OnInit {
     private _campaign: ICampaignSalesBen;
     isSaving: boolean;
 

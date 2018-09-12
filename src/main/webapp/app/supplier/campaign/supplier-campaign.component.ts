@@ -12,9 +12,9 @@ import { CampaignService } from '../service/campaign.service';
 
 @Component({
     selector: 'jhi-campaign',
-    templateUrl: './campaign.component.html'
+    templateUrl: './supplier-campaign.component.html'
 })
-export class CampaignComponent implements OnInit, OnDestroy {
+export class SupplierCampaignComponent implements OnInit, OnDestroy {
     currentAccount: any;
     campaigns: ICampaignSalesBen[];
     error: any;
