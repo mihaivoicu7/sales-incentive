@@ -1,10 +1,14 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <div *ngIf="product">
-            <h2><span>{{product.productName}}</span></h2>
+            <h2><span>Vizualizare Produs</span></h2>
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
+                <dt><span>Nume Produs</span></dt>
+                <dd>
+                    <span>{{product.productName}}</span>
+                </dd>
                 <dt><span>Cod Produs</span></dt>
                 <dd>
                     <span>{{product.productCode}}</span>

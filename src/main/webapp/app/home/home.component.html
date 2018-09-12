@@ -3,7 +3,7 @@
         <h3 class="display-4">Bine ai venit pe platforma de bonusare vanzari!</h3>
         <div [ngSwitch]="isAuthenticated()">
             <div class="alert alert-success" *ngSwitchCase="true">
-                <span id="home-logged-message" *ngIf="account"> Esti logat ca "{{account.firstName}}, {{account.lastName}}". </span>
+                <span id="home-logged-message" *ngIf="account"> Esti logat ca "{{account.firstName}} {{account.lastName}}". </span>
             </div>
 
             <div class="alert alert-warning" *ngSwitchCase="false">

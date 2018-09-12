@@ -9,7 +9,7 @@ import {IProductSalesBen, ProductSalesBen} from 'app/shared/model/product-sales-
 import {SupplierProductService} from '../service/supplier-product.service';
 import {SupplierProductComponent} from './supplier-product.component';
 import {SupplierProductUpdateComponent} from './supplier-product-update.component';
-import {SupplierProductDeleteDialogComponent} from 'app/supplier/product/supplier-product-delete-dialog.component';
+import {SupplierProductDeleteDialogComponent, SupplierProductDeletePopupComponent} from 'app/supplier/product/supplier-product-delete-dialog.component';
 import {SupplierProductDetailComponent} from 'app/supplier/product/supplier-product-detail.component';
 
 @Injectable({ providedIn: 'root' })
@@ -80,7 +80,7 @@ export const supplierProductRoute: Routes = [
 export const productPopupRoute: Routes = [
     {
         path: 'supplier-product/:id/delete',
-        component: SupplierProductDeleteDialogComponent,
+        component: SupplierProductDeletePopupComponent,
         resolve: {
             product: SupplierProductResolve
         },
@@ -88,7 +88,7 @@ export const productPopupRoute: Routes = [
             authorities: ['ROLE_SUPPLIER'],
             pageTitle: 'Products'
         },
-        canActivate: [SupplierProductResolve],
+        canActivate: [UserRouteAccessService],
         outlet: 'popup'
     }
 ];

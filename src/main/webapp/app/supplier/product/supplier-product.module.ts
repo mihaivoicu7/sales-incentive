@@ -5,12 +5,14 @@ import { SalesBenefitSharedModule } from 'app/shared';
 import {
     SupplierProductComponent,
     supplierProductRoute,
+    productPopupRoute,
     SupplierProductUpdateComponent,
     SupplierProductDetailComponent,
     SupplierProductDeleteDialogComponent,
 } from '.';
+import {SupplierProductDeletePopupComponent} from 'app/supplier/product/supplier-product-delete-dialog.component';
 
-const ENTITY_STATES = [...supplierProductRoute];
+const ENTITY_STATES = [...supplierProductRoute, ...productPopupRoute];
 
 @NgModule({
     imports: [SalesBenefitSharedModule, RouterModule.forChild(ENTITY_STATES)],
@@ -18,12 +20,14 @@ const ENTITY_STATES = [...supplierProductRoute];
         SupplierProductComponent,
         SupplierProductUpdateComponent,
         SupplierProductDetailComponent,
+        SupplierProductDeletePopupComponent,
         SupplierProductDeleteDialogComponent,
     ],
     entryComponents: [
         SupplierProductComponent,
         SupplierProductUpdateComponent,
         SupplierProductDetailComponent,
+        SupplierProductDeletePopupComponent,
         SupplierProductDeleteDialogComponent,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]

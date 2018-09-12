@@ -8,7 +8,7 @@ import { IProductSalesBen } from 'app/shared/model/product-sales-ben.model';
 import {SupplierProductService} from 'app/supplier/service/supplier-product.service';
 
 @Component({
-    selector: 'jhi-product-sales-ben-delete-dialog',
+    selector: 'jhi-supplier-product-delete-dialog',
     templateUrl: './supplier-product-delete-dialog.component.html'
 })
 export class SupplierProductDeleteDialogComponent {
@@ -39,7 +39,7 @@ export class SupplierProductDeleteDialogComponent {
     selector: 'jhi-product-sales-ben-delete-popup',
     template: ''
 })
-export class ProductSalesBenDeletePopupComponent implements OnInit, OnDestroy {
+export class SupplierProductDeletePopupComponent implements OnInit, OnDestroy {
     private ngbModalRef: NgbModalRef;
 
     constructor(private activatedRoute: ActivatedRoute, private router: Router, private modalService: NgbModal) {}
