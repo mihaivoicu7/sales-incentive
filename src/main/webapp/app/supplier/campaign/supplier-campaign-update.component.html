@@ -11,30 +11,53 @@
                     <div [hidden]="!(editForm.controls.campaignName?.dirty && editForm.controls.campaignName?.invalid)">
                         <small class="form-text text-danger"
                         [hidden]="!editForm.controls.campaignName?.errors?.required">
-                        This field is required.
+                        Numele campaniei trebuie completat
                         </small>
                     </div>
                 </div>
+
                 <div class="form-group">
                     <label class="form-control-label" for="field_fromDate">Activa de la</label>
-                    <div class="d-flex">
-                        <input id="field_fromDate" type="datetime-local" class="form-control" name="fromDate" [(ngModel)]="fromDate"
-                        />
+                    <div class="input-group">
+                        <input id="field_fromDate" class="form-control" placeholder="yyyy-MM-dd"
+                               name="fromDatedp" [(ngModel)]="fromDate" ngbDatepicker #fromDateDP="ngbDatepicker" required>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary glyphicon glyphicon-calendar" (click)="fromDateDP.toggle()" type="button"></button>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" for="field_toDate">Activa pana la</label>
-                    <div class="d-flex">
-                        <input id="field_toDate" type="datetime-local" class="form-control" name="toDate" [(ngModel)]="toDate"
-                        />
+                    <div [hidden]="!(editForm.controls.fromDate?.dirty && editForm.controls.fromDate?.invalid)">
+                        <small class="form-text text-danger"
+                               [hidden]="!editForm.controls.fromDate?.errors?.required">
+                            Data de inceput a campaniei trebuie completata
+                        </small>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" for="field_isActive">Is Active</label>
-                    <input type="checkbox" class="form-control" name="isActive" id="field_isActive"
-                        [(ngModel)]="campaign.isActive" />
                 </div>
 
+                <div class="form-group">
+                    <label class="form-control-label" for="field_toDate">Activa pana la</label>
+                    <div class="input-group">
+                        <input id="field_toDate" class="form-control" placeholder="yyyy-MM-dd"
+                               name="campaignToDate" [(ngModel)]="toDate" ngbDatepicker #toDateDP="ngbDatepicker" required jhiDateBiggerThan="{{fromDate}}">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary glyphicon glyphicon-calendar" (click)="toDateDP.toggle()" type="button"></button>
+                        </div>
+                    </div>
+                    <div [hidden]="!(editForm.controls.campaignToDate?.dirty && editForm.controls.campaignToDate?.invalid)">
+                        <small class="form-text text-danger"
+                               [hidden]="!editForm.controls.campaignToDate?.errors?.required">
+                            Data finalizarii campaniei trebuie completata
+                        </small>
+                        <small class="form-text text-danger"
+                             [hidden]="!editForm.controls.campaignToDate?.errors?.isBiggerDate">
+                            Data finalizarii campaniei nu poate fi mai mica decat data inceperii.
+                        </small>
+                    </div>
+                </div>
+                <div class = "form-group">
+                    <button type="submit" id="add-products" [disabled]="editForm.form.invalid || isSaving" class="btn btn-success" (click)="addProducts()">
+                        <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span>Editeaza produsele campaniei</span>
+                    </button>
+                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
@@ -42,6 +65,9 @@
                 </button>
                 <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
                     <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Salveaza</span>
+                </button>
+                <button type="button" id="delete-entity" [disabled]="!campaign.id" class="btn btn-danger float-right" (click)="deleteCampaign()">
+                    <fa-icon [icon]="'times'"></fa-icon>&nbsp;<span>Sterge</span>
                 </button>
             </div>
         </form>

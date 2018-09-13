@@ -3,19 +3,21 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import * as moment from 'moment';
-import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
+import {DATE_FORMAT, DATE_TIME_FORMAT} from 'app/shared/constants/input.constants';
 import { JhiAlertService } from 'ng-jhipster';
+import { Router } from "@angular/router";
 
 import { ICampaignSalesBen } from 'app/shared/model/campaign-sales-ben.model';
 import { CampaignService } from '../service/campaign.service';
 import { ISupplierSalesBen } from 'app/shared/model/supplier-sales-ben.model';
 import { SupplierSalesBenService } from 'app/entities/supplier-sales-ben';
+import {PreviousState} from "app/common/previous-state";
 
 @Component({
     selector: 'jhi-campaign-update',
     templateUrl: './supplier-campaign-update.component.html'
 })
-export class SupplierCampaignUpdateComponent implements OnInit {
+export class SupplierCampaignUpdateComponent extends PreviousState implements OnInit {
     private _campaign: ICampaignSalesBen;
     isSaving: boolean;
 
@@ -27,8 +29,11 @@ export class SupplierCampaignUpdateComponent implements OnInit {
         private jhiAlertService: JhiAlertService,
         private campaignService: CampaignService,
         private supplierService: SupplierSalesBenService,
-        private activatedRoute: ActivatedRoute
-    ) {}
+        private activatedRoute: ActivatedRoute,
+        private router: Router
+    ) {
+        super();
+    }
 
     ngOnInit() {
         this.isSaving = false;
@@ -45,6 +50,22 @@ export class SupplierCampaignUpdateComponent implements OnInit {
 
     previousState() {
         window.history.back();
+    }
+
+    deleteCampaign() {
+        if(this.campaign.id) {
+            this.campaignService.delete(this.campaign.id).subscribe(() => {
+                this.router.navigate(['/campaign']);
+            });
+        } else {
+            this.router.navigate(['/campaign']);
+        }
+    }
+
+    addProducts() {
+        this.campaignService.create(this.campaign).subscribe(campaign => {
+            this.router.navigate(['/campaign-product']);
+        });
     }
 
     save() {
@@ -75,16 +96,19 @@ export class SupplierCampaignUpdateComponent implements OnInit {
         this.jhiAlertService.error(errorMessage, null, null);
     }
 
-    trackSupplierById(index: number, item: ISupplierSalesBen) {
-        return item.id;
-    }
     get campaign() {
         return this._campaign;
     }
 
     set campaign(campaign: ICampaignSalesBen) {
         this._campaign = campaign;
-        this.fromDate = moment(campaign.fromDate).format(DATE_TIME_FORMAT);
-        this.toDate = moment(campaign.toDate).format(DATE_TIME_FORMAT);
+        if(campaign.id) {
+            this.fromDate = moment(campaign.fromDate).format(DATE_FORMAT);
+            this.toDate = moment(campaign.toDate).format(DATE_FORMAT);
+        } else {
+            const currentDate = new Date();
+            this.fromDate = moment(currentDate).format(DATE_FORMAT);
+            this.toDate = moment(currentDate).format(DATE_FORMAT);
+        }
     }
 }

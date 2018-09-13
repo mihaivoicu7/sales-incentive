@@ -4,12 +4,13 @@ import {SupplierProductModule} from './product/supplier-product.module';
 import {SupplierProductService} from './service/supplier-product.service';
 import {SalesBenefitCampaignModule} from './campaign/supplier-campaign.module';
 import {CampaignService} from './service/campaign.service';
+import {SupplierCampaignProductModule} from 'app/supplier/campaign-product/supplier-campaign-product.module';
 
 @NgModule({
-    // prettier-ignore
     imports: [
         SupplierProductModule,
-        SalesBenefitCampaignModule
+        SalesBenefitCampaignModule,
+        SupplierCampaignProductModule
     ],
     declarations: [],
     entryComponents: [],
